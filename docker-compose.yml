@@ -15,6 +15,9 @@ services:
       EULA: "TRUE"
       TYPE: "FABRIC"
       VERSION: "1.20.1"
+      # Set the server to run as root
+      UID: 0
+      GID: 0
     volumes:
       # attach the relative directory 'data' to the container's /data path
       - ./data:/data

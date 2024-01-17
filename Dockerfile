@@ -1,5 +1,8 @@
 FROM itzg/minecraft-server:latest
 
+# Change umask, required for chrootdirectory
+RUN sed -i 's/umask 0002/umask 0022/g' /start
+
 # SSH configuration
 RUN apt-get update \
  && apt-get install -y openssh-server \
