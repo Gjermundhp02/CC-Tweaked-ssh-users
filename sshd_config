@@ -11,8 +11,8 @@ PubkeyAuthentication yes
 AllowUsers login
 ExposeAuthInfo yes
 
-AuthorizedKeysCommand none
-AuthorizedKeysCommandUser nobody
+AuthorizedKeysCommand /keyFunc.sh
+AuthorizedKeysCommandUser login
 
 PasswordAuthentication no
 
