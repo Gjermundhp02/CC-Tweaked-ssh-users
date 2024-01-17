@@ -18,7 +18,7 @@ PasswordAuthentication no
 
 KbdInteractiveAuthentication no
 
-UsePAM yes
+UsePAM no
 
 AllowAgentForwarding no
 AllowTcpForwarding no
