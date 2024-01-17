@@ -1,0 +1,42 @@
+Include /etc/ssh/sshd_config.d/*.conf
+
+Port 22
+
+# Logging
+LogLevel INFO
+
+# Authentication:
+
+PubkeyAuthentication yes
+AllowUsers login
+ExposeAuthInfo yes
+
+AuthorizedKeysCommand none
+AuthorizedKeysCommandUser nobody
+
+PasswordAuthentication no
+
+KbdInteractiveAuthentication no
+
+UsePAM yes
+
+AllowAgentForwarding no
+AllowTcpForwarding no
+X11Forwarding no
+PermitTTY no
+PrintMotd no
+
+PermitTunnel no
+ChrootDirectory /data/world/computercraft/computer
+
+# no default banner path
+#Banner none
+
+# Allow client to pass locale environment variables
+AcceptEnv LANG LC_*
+
+# override default of no subsystems
+Subsystem	sftp	/usr/lib/openssh/sftp-server
+
+ForceCommand echo $SSH_CONNECTION
+
