@@ -5,7 +5,7 @@ RUN sed -i 's/umask 0002/umask 0027/g' /start
 
 # SSH configuration
 RUN apt-get update \
- && apt-get install -y openssh-server \
+ && apt-get install -y openssh-server acl \
  && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd cc

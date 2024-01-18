@@ -6,4 +6,5 @@ set -o pipefail
 service ssh start
 mkdir -p /data/world/computercraft/computer
 
+read
 /start ${@}

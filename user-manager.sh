@@ -1,19 +1,21 @@
 #!/usr/bin/env bash
-
-# getent group ccTweaked | awk '{n=split($1,A,":"); print A[n]}'
+set -o errexit
+set -o nounset
+set -o pipefail
 
 while IFS= read -r computer; do
   computer_id="$(basename "${computer}")"
-  user_name="${computer_id}"
+  user_name="cc${computer_id}"
 
   if test -f "${computer}/authorized_keys.lua"; then
     if ! id -u "${user_name}" >/dev/null 2>&1; then
       printf 'Creating user %s\n' "${user_name}"
       useradd --badname \
-              --home-dir "/data/world/computercraft/computer/${computer_id}" \
+              --home-dir "${computer}" \
               --gid "cc" \
               --shell "$(which bash)" \
               "${user_name}"
+      setfacl -R -m "u:${user_name}:rwx" "${computer}"
     fi
   else
     if id -u "${user_name}" >/dev/null 2>&1; then
