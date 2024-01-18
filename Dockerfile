@@ -8,11 +8,11 @@ RUN apt-get update \
  && apt-get install -y openssh-server \
  && rm -rf /var/lib/apt/lists/*
 
+RUN groupadd cc
+
 COPY ./sshd_config /etc/ssh/sshd_config
-
-# Create login user and group
-RUN groupadd ccTweaked 
-
-COPY ./keyFunc.sh /keyFunc.sh
+COPY ./user-manager.sh /user-manager.sh
+COPY ./authorizer.sh /authorizer.sh
 COPY ./entrypoint.sh /entrypoint.sh
+
 ENTRYPOINT /entrypoint.sh

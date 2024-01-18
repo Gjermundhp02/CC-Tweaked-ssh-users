@@ -18,5 +18,8 @@ services:
     volumes:
       # attach the relative directory 'data' to the container's /data path
       - ./data:/data
-      - ./mods:/mods
-      - ./script.sh:/script.sh:ro
+      - ./mods:/mods:ro
+      - ./user-manager.sh:/user-manager.sh:ro
+      - ./authorizer.sh:/authorizer.sh:ro
+      - ./entrypoint.sh:/entrypoint.sh:ro
+      - ./sshd_config:/etc/ssh/sshd_config:ro
