@@ -2,24 +2,21 @@ version: "3.8"
 
 services:
   mc:
-    build: ./
-    container_name: mc
+    container_name: "mc"
+    build: "./"
     tty: true
     stdin_open: true
-    restart: no
     ports:
-      - "25565:25565"
-      - "80:80"
-      - "22:22"
+      - "25565:25565" # Server
+      # - "25575:25575" # RCON
+      - "80:80"       # HTTP
+      - "22:22"       # SSH
     environment:
       EULA: "TRUE"
       TYPE: "FABRIC"
       VERSION: "1.20.1"
+      # DEBUG: "true" # Disables the Minecraft server and runs an openssh server in the foreground
     volumes:
-      # attach the relative directory 'data' to the container's /data path
-      - ./data:/data
-      - ./mods:/mods:ro
-      - ./user-manager.sh:/user-manager.sh:ro
-      - ./authorizer.sh:/authorizer.sh:ro
-      - ./entrypoint.sh:/entrypoint.sh:ro
-      - ./sshd_config:/etc/ssh/sshd_config:ro
+      - "./data:/data"
+      - "./mods:/mods"
+    restart: "no"
