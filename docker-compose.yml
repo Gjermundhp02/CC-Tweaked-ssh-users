@@ -15,6 +15,7 @@ services:
       EULA: "TRUE"
       TYPE: "FABRIC"
       VERSION: "1.20.1"
+      UMASK: "0007"
       # DEBUG: "true" # Disables the Minecraft server and runs an openssh server in the foreground
     volumes:
       - "./data:/data"

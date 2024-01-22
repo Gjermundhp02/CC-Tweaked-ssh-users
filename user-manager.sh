@@ -28,9 +28,10 @@ recurse_computers () {
   done < <(find "${BASE_DIR}" -maxdepth 1 -mindepth 1 -type d)
 }
 
+mkdir -p "${BASE_DIR}"
+setfacl -d u:minecraft:rwx "${BASE_DIR}"
 recurse_computers
 printf 'Setting up watchers for %s\n' "${BASE_DIR}"
-mkdir -p "${BASE_DIR}"
 inotifywait --monitor \
             --recursive \
             --quiet \

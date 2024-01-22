@@ -3,6 +3,8 @@ FROM itzg/minecraft-server:latest
 # Change umask, required for chrootdirectory
 # RUN sed -i 's/umask 0002/umask 0027/g' /start
 
+# make dir and permissions
+
 # SSH configuration
 RUN apt-get update \
  && apt-get install -y openssh-server acl inotify-tools \
